@@ -6,6 +6,7 @@ import ItemListContainers from './containers/ItemListContainers';
 function App() {
   return (
     <>
+      
       <NavBar/>
 
       <ItemListContainers greeting={"Nuestros productos mas destacados!"}/>
