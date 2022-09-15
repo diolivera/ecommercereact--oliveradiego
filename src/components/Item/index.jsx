@@ -9,7 +9,7 @@ const Item = ({product}) => {
     <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src={product.image} />
       <Card.Body>
-        <Card.Title>{product.name}</Card.Title>
+        <Card.Title>{product.title}</Card.Title>
         <Card.Text>{product.description}</Card.Text>
         <Card.Text>En stock {product.stock} unidades!</Card.Text>
         <Button variant="primary">Agregar al carrito</Button>
