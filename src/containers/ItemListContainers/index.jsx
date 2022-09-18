@@ -5,6 +5,7 @@ import ItemCount from '../../components/ItemCount';
 import './styles.css';
 //import { products } from '../../data/products';
 import ItemList from '../../components/ItemList';
+import {useParams} from 'react-router-dom';
 
 const ItemListContainers = ({greeting}) => {
 
@@ -12,41 +13,36 @@ const ItemListContainers = ({greeting}) => {
         alert (`Se agrego la cantidad ${cantidad} al carrito!`)
     }
 
-    const [productos, setProductos] = useState ([])
+    const [productos, setProductos] = useState([]);
 
-    useEffect (()=> {
+    const {categoryId} = useParams();
 
-        (async ()=> {
+    console.log(categoryId);
 
-        
-        
-        /*const obtenerProductos = new Promise ((accept, reject)=> {
-            setTimeout(()=> {
-              accept(products)
-            }, 2000);
-        })
+    useEffect(() => {
+        (async () => {
+            try {
+                if (categoryId){
+                  const response = await fetch(
+                    "https://fakestoreapi.com/products/category/" + categoryId
+                );
+                const productos = await response.json();
+                setProductos(productos);
+                }
+                else {
+                  const response = await fetch(
+                      "https://fakestoreapi.com/products"
+                  );
+                  const productos = await response.json();
+                  setProductos(productos);
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        })();
+    }, [categoryId]);
 
-        obtenerProductos
-            .then((result) =>{
-                console.log (result)
-                setProductos (result)
-            })
-            .catch((error) =>console.log(error)) */
-
-        try {
-            const response = await fetch ("https://fakestoreapi.com/products")
-            const productos = await response.json();
-            setProductos(productos);
-        }   catch (error) {
-            console.log(error);
-        }
-
-
-        })()
-            
-    }, [])
-
-    console.log (productos)
+    console.log(productos);
     
     return (
         <>
