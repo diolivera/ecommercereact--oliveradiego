@@ -13,13 +13,13 @@ const NavBar = () => {
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand to="#home">Mi App React</Navbar.Brand>
+          <Navbar.Brand to="#home">ACME</Navbar.Brand>
           <Nav className="me-auto">
             <Link to="#home">Inicio</Link>
-            <Link to="/category/men's clothing">Men's clothing</Link>
-            <Link to="/category/women's clothing">Women's clothing</Link>
-            <Link to="/category/electronics">Electronics</Link>
-            <Link to="/category/jewelery">Jewelery</Link>
+            <Link to="/category/men's clothing">Consolas</Link>
+            <Link to="/category/women's clothing">Juegos</Link>
+            <Link to="/category/electronics">Accesorios</Link>
+            <Link to="/category/jewelery">PC Gaming</Link>
             <CartWidget/>
           </Nav>
         </Container>
