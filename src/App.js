@@ -6,25 +6,28 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import ShopProvider from './context/ShopProvider';
 
 function App() {
 
   return (
-    <BrowserRouter>
-      
-      <NavBar/>
 
-      <Routes>
-        <Route path="/" element={<ItemListContainer/>}/>
-        <Route path="/category/:categoryId" element={<ItemListContainer/>}/>
-        <Route path="/detail/:productId" element={<ItemDetailContainer/>}/>
-        <Route path="/cart" element={<Cart/>}/>
-        <Route path="*" element={<NotFound/>}/>
-      </Routes>
+    <ShopProvider>
+        <BrowserRouter>
 
-      <div className="App"></div>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<ItemListContainer/>}/>
+            <Route path="/category/:categoryId" element={<ItemListContainer/>}/>
+            <Route path="/detail/:productId" element={<ItemDetailContainer/>}/>
+            <Route path="/cart" element={<Cart/>}/>
+            <Route path="*" element={<NotFound/>}/>
+          </Routes>
 
-    </BrowserRouter>
+          <div className="App"></div>
+
+        </BrowserRouter>
+    </ShopProvider>
   );
 }
 
