@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Link} from 'react-router-dom';
+//import {Link} from 'react-router-dom';
 
 
 const NavBar = () => {
@@ -13,13 +13,13 @@ const NavBar = () => {
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand to="#home">ACME</Navbar.Brand>
+          <Navbar.Brand href="#home">GOOD GAME</Navbar.Brand>
           <Nav className="me-auto">
-            <Link to="#home">Inicio</Link>
-            <Link to="/category/men's clothing">Consolas</Link>
-            <Link to="/category/women's clothing">Juegos</Link>
-            <Link to="/category/electronics">Accesorios</Link>
-            <Link to="/category/jewelery">PC Gaming</Link>
+            <Nav.Link href="#home">Inicio</Nav.Link>
+            <Nav.Link href="/category/men's clothing">Consolas</Nav.Link>
+            <Nav.Link href="/category/women's clothing">Juegos</Nav.Link>
+            <Nav.Link href="/category/electronics">Accesorios</Nav.Link>
+            <Nav.Link href="/category/jewelery">PC Gaming</Nav.Link>
             <CartWidget/>
           </Nav>
         </Container>

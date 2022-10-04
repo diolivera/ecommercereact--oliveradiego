@@ -1,6 +1,8 @@
 import React from 'react'
 import Item from '../Item'
-import './styles.scss';
+import './styles.css';
+import Spinner from 'react-bootstrap/Spinner';
+
 
 const ItemList = ({products}) => {
   return (
@@ -9,7 +11,9 @@ const ItemList = ({products}) => {
             return <Item key={product.id} product={product}/>
         })
         :
-        <h2>Loading...</h2>
+        <Spinner animation="border" role="status">
+      <span className="visually-hidden">Loading...</span>
+    </Spinner>
       }
     </div>
   )

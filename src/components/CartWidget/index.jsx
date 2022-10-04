@@ -9,7 +9,7 @@ const CartWidget = () => {
         right: '20px',
         top: '5 px',
     }}>
-        <TiShoppingCart size={50}/>
+        <TiShoppingCart color='white' size={45}/>
     </div>
   )
 }
