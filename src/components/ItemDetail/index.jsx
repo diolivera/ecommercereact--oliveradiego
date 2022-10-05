@@ -26,7 +26,8 @@ const ItemDetail = ({ product }) => {
     <div className='detail-container'>
         <img className="detail-img"src={product.image} alt="product-detail"/>
         <div className='detail-subcontainer'>
-          <h1>{product.title}</h1>
+          <h2>{product.title}</h2>
+          <h5>{product.description}</h5>
           {qty ? (
                     <button onClick={handleFinish}>Finalizar compra</button>
                 ) : (

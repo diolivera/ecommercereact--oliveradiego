@@ -1,5 +1,8 @@
 .botones {
+    padding: 10px;
+    margin: 10px;
     display: flex;
     justify-content: center;
+    justify-items: center;
 
 }

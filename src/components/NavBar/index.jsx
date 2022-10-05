@@ -15,11 +15,11 @@ const NavBar = () => {
         <Container>
           <Navbar.Brand href="#home">GOOD GAME</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Inicio</Nav.Link>
-            <Nav.Link href="/category/men's clothing">Consolas</Nav.Link>
-            <Nav.Link href="/category/women's clothing">Juegos</Nav.Link>
-            <Nav.Link href="/category/electronics">Accesorios</Nav.Link>
-            <Nav.Link href="/category/jewelery">PC Gaming</Nav.Link>
+            <Nav.Link href="/">INICIO</Nav.Link>
+            <Nav.Link href="/category/consolas">CONSOLAS</Nav.Link>
+            <Nav.Link href="/category/juegos">JUEGOS</Nav.Link>
+            <Nav.Link href="/category/accesorios">ACCESORIOS</Nav.Link>
+            <Nav.Link href="/category/pc gaming">PC GAMING</Nav.Link>
             <CartWidget/>
           </Nav>
         </Container>
