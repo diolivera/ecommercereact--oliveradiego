@@ -14,13 +14,13 @@ const Item = ({product}) => {
 
   return (
     <div className='cards' onClick={handleNavigate}>
-    <Card style={{ width: '15rem' }}>
+    <Card style={{ width: '19rem' }}>
       <Card.Img variant="top" src={product.image} />
       <Card.Body>
         <Card.Title>{product.title}</Card.Title>
         <Card.Text>${product.price}</Card.Text>
         <Card.Text>En stock!</Card.Text>
-        <Button variant="primary">Agregar al carrito</Button>
+        <Button variant="dark">Agregar al carrito</Button>
       </Card.Body>
     </Card>
     </div>

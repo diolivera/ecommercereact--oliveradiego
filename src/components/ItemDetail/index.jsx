@@ -3,6 +3,7 @@ import ItemCount from '../ItemCount';
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
 import { Shop } from "../../context/ShopProvider";
+import Button from 'react-bootstrap/Button';
 
 const ItemDetail = ({ product }) => {
   const [qty, setQty] = useState(0);
@@ -26,10 +27,11 @@ const ItemDetail = ({ product }) => {
     <div className='detail-container'>
         <img className="detail-img"src={product.image} alt="product-detail"/>
         <div className='detail-subcontainer'>
-          <h2>{product.title}</h2>
-          <h5>{product.description}</h5>
+          <h2 className='detail-product'>{product.title}</h2>
+          <h5 className='detail-product'>{product.description}</h5>
+          <h3 className='detail-product'>${product.price}</h3>
           {qty ? (
-                    <button onClick={handleFinish}>Finalizar compra</button>
+                    <Button variant="dark" onClick={handleFinish}>Finalizar compra</Button>
                 ) : (
                     <ItemCount stock={10} initial={1} onAdd={addCart} />
                 )}
