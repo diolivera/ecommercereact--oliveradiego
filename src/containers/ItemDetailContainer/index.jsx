@@ -11,15 +11,12 @@ const ItemDetailContainer = () => {
 
     console.log(productId);
     
-    //Gestionar la obtención de la data del detalle
     useEffect(()=> {
 
         const getProducts = async () => {
             try {
-                //Genera la referencia al documento
                 const docRef = doc(db, "products", productId);
 
-                //Realizamos la petición o el llamado a Firebase
                 const docSnap = await getDoc(docRef);
 
                 if (docSnap.exists()) {
@@ -29,10 +26,6 @@ const ItemDetailContainer = () => {
                 // doc.data() will be undefined in this case
                     console.log("No such document!");
                 }
-
-                //const productSelected = products.find(product => product.id === productId)
-                //const response = await fetch(`https://fakestoreapi.com/products/${productId}`);
-                //const data = await response.json();
 
             } catch (error) {
                 console.log(error);
