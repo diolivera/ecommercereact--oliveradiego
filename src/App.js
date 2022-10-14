@@ -1,37 +1,15 @@
 import './App.css';
-import NavBar from './components/NavBar';
-import ItemDetailContainer from './containers/ItemDetailContainer';
-import ItemListContainer from './containers/ItemListContainer';
-import NotFound from './components/NotFound';
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
-import Cart from './containers/CartContainer';
-import ShopProvider from './context/ShopProvider';
+import Routing from './routes';
 
 function App() {
 
   return (
-
-    <ShopProvider>
-        <BrowserRouter>
-
-          <NavBar />
-          <Routes>
-            <Route path="/" element={<ItemListContainer/>}/>
-            <Route path="/category/:categoryId" element={<ItemListContainer/>}/>
-            <Route path="/detail/:productId" element={<ItemDetailContainer/>}/>
-            <Route path="/cart" element={<Cart/>}/>
-            <Route path="*" element={<NotFound/>}/>
-          </Routes>
-
-          <div className="App"></div>
-
-        </BrowserRouter>
-    </ShopProvider>
+    <div style={{ 
+      backgroundImage: `url("https://png.pngtree.com/background/20210711/original/pngtree-pastel-colorful-background-clouds-picture-image_1162170.jpg")` 
+    }}>
+      <Routing/>
+    </div>
   );
-}
+} 
 
 export default App;

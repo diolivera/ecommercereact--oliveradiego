@@ -1,46 +1,25 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
-import './styles.css';
-import ItemList from '../../components/ItemList';
-import {useParams} from 'react-router-dom';
-import { db } from "../../firebase/config";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import React from "react";
+import ItemList from "../../components/ItemList";
+import { useParams } from "react-router-dom";
+import useFirebase from "../../hooks/useFirebase";
+import Spinner from 'react-bootstrap/Spinner';
 
-const ItemListContainer = ({ greeting }) => {
-    console.log(db);
-
-    const [productos, setProductos] = useState([]);
+const ItemListContainer = () => {
 
     const { categoryId } = useParams();
+    const [loading, productos, error] = useFirebase(categoryId)
 
-    console.log(categoryId);
-
-    useEffect(() => {
-        (async () => {
-            try {
-                const q = categoryId
-                    ? query(
-                          collection(db, "products"),
-                          where("category", "==", categoryId)
-                      )
-                    : query(collection(db, "products"));
-
-                const querySnapshot = await getDocs(q);
-                const productosFirebase = [];
-                querySnapshot.forEach((doc) => {
-                    // doc.data() is never undefined for query doc snapshots
-                    productosFirebase.push({ id: doc.id, ...doc.data() });
-                });
-                console.log(productosFirebase);
-                setProductos(productosFirebase);
-
-            } catch (error) {
-                console.log(error);
-            }
-        })();
-    }, [categoryId]);
-
-    return <ItemList products={productos} />;
+    return (
+        <>
+            {loading ? 
+            <Spinner animation="border" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </Spinner>
+            :
+            <ItemList products={productos} />}
+            {error && <h2>{error}</h2>}
+        </>
+    )
 };
 
 export default ItemListContainer;

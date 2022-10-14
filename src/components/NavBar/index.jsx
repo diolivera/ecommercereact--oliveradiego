@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
-//import {Link} from 'react-router-dom';
+
 
 
 const NavBar = () => {
@@ -13,7 +13,13 @@ const NavBar = () => {
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">GOOD GAME</Navbar.Brand>
+          <Navbar.Brand href="#home"><img
+              src="../imagen/logo.png"
+              width="50"
+              height="50"
+              className="d-inline-block align-top"
+              alt="Good Game"
+            /></Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/">INICIO</Nav.Link>
             <Nav.Link href="/category/consolas">CONSOLAS</Nav.Link>
