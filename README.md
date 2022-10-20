@@ -4,9 +4,9 @@ Mi proyecto consiste en una plataforma e-commerce orientada al mercado gamer y d
 
 ## Librerias Utilizadas
 
-**react-router-dom**: Utilizado para los routing.
-**boostrap-react** : Empleado para los estilos del proyecto.
-**firebase**: Servicio Cloud.
-**sweetalert**: Diseño de alertas y mensajes.
-**react-icons**: Usado para el carrito.
-**validator**: Aprovechado para la validacion de cuentas.
+-**React-router-dom**: Utilizado para los routing.
+-**Boostrap-react** : Empleado para los estilos del proyecto.
+-**Firebase**: Servicio Cloud.
+-**Sweetalert**: Diseño de alertas y mensajes.
+-**React-icons**: Usado para el carrito.
+-**Validator**: Aprovechado para la validacion de cuentas.
