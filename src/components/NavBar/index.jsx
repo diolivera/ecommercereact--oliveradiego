@@ -1,14 +1,13 @@
 import React from 'react';
-import './styles.css';
 import CartWidget from '../CartWidget';
+
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-
 const NavBar = () => {
+  
   return (
     <>
       <Navbar bg="dark" variant="dark">
@@ -29,8 +28,7 @@ const NavBar = () => {
             <CartWidget/>
           </Nav>
         </Container>
-      </Navbar>
-      
+      </Navbar>  
     </>
   )
 }

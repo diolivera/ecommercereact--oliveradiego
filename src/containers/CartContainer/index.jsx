@@ -1,127 +1,75 @@
-import React, { useContext, useState } from "react";
-import { Shop } from "../../context/ShopProvider";
-import ordenGenerada from "../../services/generarOrden";
+import React, { useContext } from 'react';
+import './styles.css';
 
-import { DataGrid } from "@mui/x-data-grid";
-import { Button, CircularProgress } from "@mui/material";
-import { collection, addDoc } from "firebase/firestore";
-import { doc, updateDoc, getDoc } from "firebase/firestore";
-import { db } from "../../firebase/config";
+import { Shop } from "../../context/ShopProvider";
+import { Link, useNavigate } from "react-router-dom";
+import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
 
 const Cart = () => {
-    const { cart, removeItem, clearCart, total } = useContext(Shop);
+  const {cart, removeItem, clearCart, total} = useContext(Shop);
+  const navigate = useNavigate();
+  let totalCarrito = total(); 
 
-    const [loading, setLoading] = useState(false);
+  const removeCar = (e) => {    
+    removeItem(e.target.value);    
+    if(totalCarrito > 0){
+      navigate('/cart')}
+    else {
+      navigate('/');
+    }
+  }
 
-    const renderImage = (image) => {
-        return (
-            <img
-                src={image.value}
-                alt="cart-product"
-                style={{ height: "120px" }}
-            ></img>
-        );
-    };
-
-    const renderRemoveButton = (item) => {
-        const product = item.value;
-        return (
-            <Button
-                onClick={() => removeItem(product)}
-                variant="contained"
-                color="error"
-            >
-                Borrar
-            </Button>
-        );
-    };
-
-    const handleBuy = async () => {
-        setLoading(true)
-        const importeTotal = total();
-        const orden = ordenGenerada(
-            "Diego",
-            "diego@gmail.com",
-            11111111111,
-            cart,
-            importeTotal
-        );
-        console.log(orden);
-
-        // Add a new document with a generated id.
-        const docRef = await addDoc(collection(db, "orders"), orden);
-
-        cart.forEach(async (productoEnCarrito) => {
-            const productRef = doc(db, "products", productoEnCarrito.id);
-            const productSnap = await getDoc(productRef);
-            await updateDoc(productRef, {
-                stock: productSnap.data().stock - productoEnCarrito.quantity,
-            });
-        });
-        setLoading(false);
-        alert(
-            `Gracias por su compra! Se generó la orden generada con ID: ${docRef.id}`
-        );
-    };
-
-    const columns = [
-        {
-            field: "image",
-            headerName: "Image",
-            width: 250,
-            renderCell: renderImage,
-        },
-        { field: "title", headerName: "Product", width: 450 },
-        { field: "quantity", headerName: "Quantity", width: 80 },
-        {
-            field: "remove",
-            headerName: "Remove",
-            renderCell: renderRemoveButton,
-            width: 120,
-        },
-    ];
-
-    const filas = [];
-    cart.forEach((item) => {
-        filas.push({
-            id: item.id,
-            image: item.image,
-            title: item.title,
-            quantity: item.quantity,
-            remove: item,
-        });
-    });
-
+  const cleanAllCart = () => {
+    clearCart()
+    navigate('/');
+  }
+  
+  const terminarCompra = () => {
+    navigate('/form');    
+  }
+  
+  if(cart.length < 1){    
+    navigate('/');
+    return <Link to="/"></Link>
+  } else {        
     return (
-        <div style={{ height: 400, width: "100%" }}>
-            <DataGrid
-                rows={filas}
-                columns={columns}
-                pageSize={10}
-                rowsPerPageOptions={[10]}
-                rowHeight={150}
-            />
-            <Button onClick={clearCart} color="error" variant="contained">
-                Borrar todo
-            </Button>
-            {loading ? (
-                <div
-                    style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "center",
-                        width: "100%",
-                        height: "100%",
-                        alignItems: "center",
-                    }}
-                >
-                    <CircularProgress/>
-                </div>
-            ) : (
-                <Button onClick={handleBuy} color="success" variant="contained">Confirmar compra</Button>
-            )}
+      <div>
+      <Table striped bordered hover size="sm" responsive>
+        <thead>
+          <tr>
+            <th>Cantidad</th>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Total</th>
+            <th></th>
+          </tr>      
+        </thead>
+        <tbody>
+        {cart.map(product => {                   
+          return (          
+            <tr>
+              <td width={'1px'}>{product.quantity}</td>
+              <td>{product.title}</td>
+              <td>${product.price}</td>
+              <td>${product.quantity * product.price}</td>
+              <td><Button variant="danger" value={product.id} onClick={removeCar}>Eliminar</Button></td>            
+            </tr>          
+          )
+        })      
+        }      
+        </tbody>              
+      </Table>  
+        <h4 className='detail-product'><strong>TOTAL COMPRA: ${totalCarrito}</strong></h4>
+        <br></br>
+        <div className='botones'>
+          <Button variant="secondary" onClick={cleanAllCart}>Limpiar Carrito</Button>
+          <Button variant="success" onClick={terminarCompra}>Checkout</Button>          
         </div>
-    );
-};
+      </div>
+    )
+  }
+}
+
 
 export default Cart;

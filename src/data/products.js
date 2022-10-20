@@ -1,6 +1,5 @@
 export const products = [
     {id: 1, description: "Con tu consola PlayStation 5 tendrás entretenimiento asegurado todos los días. Su tecnología fue creada para poner nuevos retos tanto a jugadores principiantes como expertos.", name: "Sony PlayStation 5 825GB Standard", stock: 10, image: "https://http2.mlstatic.com/D_Q_NP_841787-MLA44484414455_012021-P.webp", },
-
     {id: 2, description: "Este tipo de vino tinto esta elaborado con la uva Zinfandel, de origen europea.", name: "Vino Artezin Zinfandel California", stock: 15, image: "https://http2.mlstatic.com/D_NQ_NP_690634-MLA50822810413_072022-O.webp", },
     {id: 3, description: "Este tipo de vino tinto esta elaborado con uva tempranillo, una cepa originaria de España.", name: "Vino Zuccardi Q Tempranillo", stock: 8, image: "https://http2.mlstatic.com/D_NQ_NP_731704-MLA50221890824_062022-O.webp", },
     {id: 4, description: "El vino Merlot es elaborado con esta cepa de uva conocida tambien como “variedad camaleon” por su peculiar característica de cambiar sus cualidades dependiendo de la temperatura y el clima.", name: "Vino Weinert Merlot", stock: 12, image: "https://http2.mlstatic.com/D_NQ_NP_711958-MLA44879052992_022021-O.webp", },

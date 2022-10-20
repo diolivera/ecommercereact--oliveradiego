@@ -1,12 +1,5 @@
-.item-list-containers{
-    padding-top: 30px;
+.load {
     display: flex;
     justify-content: center;
-
-}
-
-.titulo{
-    padding-top: 30px;
-    display: flex;
-    justify-content: center;
+    align-items:center ;
 }

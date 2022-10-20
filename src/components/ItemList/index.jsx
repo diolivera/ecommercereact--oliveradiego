@@ -3,15 +3,13 @@ import Item from '../Item';
 import './styles.css';
 
 const ItemList = ({products}) => {
-
-  console.log(products);
+  
   return (
     <div className='item-container'>
         {products.map(product => {
             return <Item key={product.id} product={product}/>
         })}
     </div>
-
   )
 }
 

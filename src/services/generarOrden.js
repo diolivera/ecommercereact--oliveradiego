@@ -11,5 +11,4 @@ const ordenGenerada = (nombre, email, telefono, cart, total) => {
         createdAt: new Date().toLocaleString()
     }
 }
-
 export default ordenGenerada;

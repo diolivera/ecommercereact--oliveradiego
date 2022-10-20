@@ -12,3 +12,9 @@
     color: #222222;
 
 }
+
+.detail-product {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
